@@ -1986,6 +1986,11 @@ def load_custom_node(module_path: str, ignore=set(), module_parent="custom_nodes
         module_name = sp[0]
     try:
         logging.debug("Trying to load custom node {}".format(module_path))
+
+        from colorama import Fore, Style
+        possible_module_name = os.path.basename(module_path)
+        print(Fore.YELLOW + "\n" + possible_module_name + Style.RESET_ALL)
+
         if os.path.isfile(module_path):
             module_spec = importlib.util.spec_from_file_location(module_name, module_path)
             module_dir = os.path.split(module_path)[0]
